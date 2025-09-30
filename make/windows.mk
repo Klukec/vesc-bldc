@@ -44,5 +44,6 @@ export PYTHON
 # Configure shell commands
 ############################
 
+SHELL = cmd
 RM := del
 MKDIR := powershell -noprofile -command New-Item -Force -itemtype "directory"

@@ -180,7 +180,9 @@ fw_$(1)_vescfw:
 		TCHAIN_PREFIX="$(ARM_SDK_PREFIX)" \
 		BUILDDIR="$(2)" \
 		PROJECT="$(3)" \
-		build_args='$$($(1)_BUILD_MACROS)' USE_VERBOSE_COMPILE=no
+		build_args='$$($(1)_BUILD_MACROS)' \
+		SHELL=$(SHELL) \
+		USE_VERBOSE_COMPILE=no
 
 $(1)_flash: fw_$(1)_flash
 fw_$(1)_flash: fw_$(1)_vescfw fw_$(1)_flash_only
@@ -354,6 +356,7 @@ ut_$(1)_%: $$(UT_OUT_DIR)
 		\
 		GTEST_DIR=$(GTEST_DIR) \
 		\
+		SHELL=$(SHELL) \
 		$$*
 
 .PHONY: ut_$(1)_clean
